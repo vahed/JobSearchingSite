@@ -16,7 +16,9 @@ class CreateJobseakerProfilesTable extends Migration
 
         Schema::create('jobseaker_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('user_id');
+            //$table->id();
+            //$table->unsignedBigInteger('user_id')->nullable();
+            //$table->unsignedInteger('user_id')->index();
             $table->string('firstname',100);
             $table->string('lastname', 100);
             $table->string('last_job_title', 100);
@@ -27,7 +29,7 @@ class CreateJobseakerProfilesTable extends Migration
             $table->string('Postcode', 50);
             $table->string('gender', 10);
             $table->date('date_of_birth');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ class JobseakerProfile extends Model
 
 {
     protected $fillable = [
+        //'user_id',
         'firstname',
         'lastname',
         'last_job_title',

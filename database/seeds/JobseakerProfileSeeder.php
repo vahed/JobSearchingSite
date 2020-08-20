@@ -13,7 +13,7 @@ class JobseakerProfileSeeder extends Seeder
     public function run()
     {
         $js = new JobseakerProfile;
-        $js->user_id = 1;
+        //$js->user_id = 1;
         $js->firstname = "Brian";
         $js->lastname = "Jake";
         $js->last_job_title = 'programmer';

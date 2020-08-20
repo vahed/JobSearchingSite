@@ -13,7 +13,7 @@ class JobseakerSkillsSeeder extends Seeder
     public function run()
     {
         $jsSkills = new JobseakerSkills;
-        $jsSkills->user_id = 1;
+        //$jsSkills->user_id = 1;
         $jsSkills->job_title = "Programmer";
         $jsSkills->current_job_status = "Job seeker";
         $jsSkills->cover_letter = 'This is my coversing letter';

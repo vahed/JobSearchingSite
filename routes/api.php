@@ -17,5 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('JobseakerProfile','JobseakerProfileController');
-//Route::resource('JobseakerProfile','JobseakerProfileController');
+//Route::apiResource('JobseakerProfile','JobseakerProfileController');
+//Route::group(['prefix' => 'jobseakerProfile'], function() {
+    Route::get('/jobseakerProfiles', 'JobseakerProfileController@index');
+    Route::get('/jobseakerProfile/{id}', 'JobseakerProfileController@show');
+    Route::post('/jobseakerProfile', 'JobseakerProfileController@store');
+    Route::put('/jobseakerProfile/{id}', 'JobseakerProfileController@store');
+    Route::delete('/jobseakerProfile/{id}', 'JobseakerProfileController@destroy');
+//});
+

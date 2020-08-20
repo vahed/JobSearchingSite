@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\JobseakerProfile;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
 class JobseakerProfileController extends Controller
 {
@@ -14,7 +15,8 @@ class JobseakerProfileController extends Controller
      */
     public function index()
     {
-        //
+        JobseakerProfile::all();
+        return response()->json(201);
     }
 
     /**
@@ -35,20 +37,25 @@ class JobseakerProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $JobseakerProfile = JobseakerProfile::create([
-            'firstname' => $request->firstname,
-            'lastname'=>$request->lastname,
-            'last_job_title'=>$request->last_job_title,
-            'email'=>$request->email,
-            'mobile'=>$request->mobile,
-            'home_phone'=>$request->home_phone,
-            'address'=>$request->address,
-            'Postcode'=>$request->postcode,
-            'gender'=>$request->gender,
-            'date_of_birth'=>$request->date_of_birth
-        ]);
+        $jobseakerProfile = new JobseakerProfile;
 
-        return response()->json($JobseakerProfile, 201);
+        $js = $request->isMethod('put') ? $jobseakerProfile::findOrFail($request->id) : new JobseakerProfile;
+
+        //'user_id'=> 1,
+        $js->id = $request->input('id');
+        $js->firstname = $request->input('firstname');
+        $js->lastname = $request->input('lastname');
+        $js->last_job_title = $request->input('last_job_title');
+        $js->email = $request->input('email');
+        $js->mobile = $request->input('mobile');
+        $js->home_phone = $request->input('home_phone');
+        $js->address = $request->input('address');
+        $js->Postcode = $request->input('Postcode');
+        $js->gender = $request->input('gender');
+        $js->date_of_birth = $request->input('date_of_birth');
+        $js->save();
+
+        return response()->json(201);
     }
 
     /**
@@ -59,7 +66,7 @@ class JobseakerProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        return JobseakerProfile::findOrFail($id);
     }
 
     /**
@@ -80,9 +87,8 @@ class JobseakerProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, JobseakerProfile $id)
     {
-        //
     }
 
     /**
@@ -93,6 +99,9 @@ class JobseakerProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jobseakerProfile = JobseakerProfile::findOrFail($id);
+        if($jobseakerProfile->delete()){
+            return response()->json(null, 204);
+        }
     }
 }
