@@ -20,9 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::apiResource('JobseakerProfile','JobseakerProfileController');
 //Route::group(['prefix' => 'jobseakerProfile'], function() {
     Route::get('/jobseakerProfiles', 'JobseakerProfileController@index');
-    Route::get('/jobseakerProfile/{id}', 'JobseakerProfileController@show');
+    Route::get('/jobseakerProfiles/{id}', 'JobseakerProfileController@show');
     Route::post('/jobseakerProfile', 'JobseakerProfileController@store');
     Route::put('/jobseakerProfile/{id}', 'JobseakerProfileController@store');
     Route::delete('/jobseakerProfile/{id}', 'JobseakerProfileController@destroy');
+
+    Route::patch('user/profile', 'UserController@updateProfile');
 //});
 

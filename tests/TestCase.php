@@ -8,11 +8,16 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication, DatabaseMigrations;
-    protected $faker;
+    /*use CreatesApplication, DatabaseMigrations;
+    /protected $faker;*/
 
     public function setUp() :void{
-        parent::setUp();
-        $this->faker = Factory::create();
+        parent::setUp();//override setup & call parent function
+        //$this->faker = Factory::create();
+
+        $this->artisan('migrate');
+        $this->artisan('db:seed');
+
+        $this->withoutExceptionHandling();
     }
 }

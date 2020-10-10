@@ -12,7 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 //use PHPUnit\Framework\TestCase;
 use Tests\TestCase;
 
-class ProfileTest extends TestCase
+/*class ProfileTest extends TestCase
 {
     use RefreshDatabase; //refresh migrate tables
     protected $jobseakerProfile;
@@ -64,5 +64,5 @@ class ProfileTest extends TestCase
                 ],
                 "message" => "Created successfully"
             ]);
-    }*/
-}
+    }
+}*/
